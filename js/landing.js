@@ -11,7 +11,7 @@ function initLandingAnimation() {
   
   if (!container) return;
 
-  const loadingLetter = container.querySelectorAll('.landing__letter');
+  const loadingLetter = container.querySelectorAll('.landing-loader .landing__letter');
   const box = container.querySelectorAll('.landing-loader__box');
   const growingImage = container.querySelectorAll('.landing__growing-image');
   const headingStart = container.querySelectorAll('.landing__h1-start');
@@ -29,11 +29,21 @@ function initLandingAnimation() {
       container.classList.remove('is--hidden');
       // Disable scroll during animation
       document.body.style.overflow = 'hidden';
+      
+      // Also stop Lenis if it exists
+      if (window.lenis) {
+        window.lenis.stop();
+      }
     },
     onComplete: () => {
       // Enable scroll after animation
       document.body.style.overflow = '';
       container.classList.remove('is--loading');
+      
+      // Start Lenis
+      if (window.lenis) {
+        window.lenis.start();
+      }
       
       // Initialize main page animations after landing completes
       if (typeof window.initMainAnimations === 'function') {
@@ -48,7 +58,7 @@ function initLandingAnimation() {
   if (loadingLetter.length) {
     tl.from(loadingLetter, {
       yPercent: 100,
-      stagger: 0.04,
+      stagger: 0.03,
       duration: 1.25
     });
   }
@@ -58,9 +68,9 @@ function initLandingAnimation() {
     tl.fromTo(box, {
       width: '0em',
     }, {
-      width: '1em',
+      width: '0.8em',
       duration: 1.25
-    }, '< 1.25');
+    }, '< 1');
   }
 
   // Image grows inside box
@@ -73,12 +83,12 @@ function initLandingAnimation() {
     }, '<');
   }
 
-  // Letters spread apart
+  // Letters spread apart - Sultan goes left, Aldeiro goes right
   if (headingStart.length) {
     tl.fromTo(headingStart, {
       x: '0em',
     }, {
-      x: '-0.05em',
+      x: '-0.08em',
       duration: 1.25
     }, '<');
   }
@@ -87,21 +97,21 @@ function initLandingAnimation() {
     tl.fromTo(headingEnd, {
       x: '0em',
     }, {
-      x: '0.05em',
+      x: '0.08em',
       duration: 1.25
     }, '<');
   }
 
-  // Image layer transitions
+  // Image layer transitions (flash effect)
   if (coverImageExtra.length) {
     tl.fromTo(coverImageExtra, {
       opacity: 1,
     }, {
       opacity: 0,
-      duration: 0.08,
+      duration: 0.1,
       ease: 'none',
-      stagger: 0.4
-    }, '-=0.1');
+      stagger: 0.35
+    }, '-=0.2');
   }
 
   // Image expands to full screen
@@ -110,7 +120,7 @@ function initLandingAnimation() {
       width: '100vw',
       height: '100dvh',
       duration: 2
-    }, '< 1.25');
+    }, '< 1');
   }
 
   if (box.length) {
@@ -120,14 +130,14 @@ function initLandingAnimation() {
     }, '<');
   }
 
-  // White letters animate in
+  // White letters animate in at the bottom
   if (headerLetter.length) {
     tl.from(headerLetter, {
       yPercent: 100,
       duration: 1.25,
       ease: 'expo.out',
-      stagger: 0.04
-    }, '< 1.2');
+      stagger: 0.03
+    }, '< 1');
   }
 
   // Nav links animate in
@@ -137,7 +147,7 @@ function initLandingAnimation() {
       opacity: 0,
       duration: 1.25,
       ease: 'expo.out',
-      stagger: 0.08
+      stagger: 0.06
     }, '<');
   }
 }

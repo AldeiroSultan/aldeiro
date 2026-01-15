@@ -46,14 +46,14 @@
 
 .landing__h1-start {
   justify-content: flex-end;
-  width: 1.5256em;
+  width: auto;
   display: flex;
   overflow: hidden;
 }
 
 .landing__h1-end {
   justify-content: flex-start;
-  width: 1.525em;
+  width: auto;
   display: flex;
   overflow: hidden;
 }

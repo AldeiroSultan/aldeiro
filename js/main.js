@@ -2,30 +2,12 @@
    MAIN JS - Core Functionality
    ======================================== */
 
-// Initialize Lenis for smooth scrolling
-const lenis = new Lenis({
-  duration: 1.2,
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  orientation: 'vertical',
-  gestureOrientation: 'vertical',
-  smoothWheel: true,
-  wheelMultiplier: 1,
-  touchMultiplier: 2,
-  infinite: false,
-});
-
-// Synchronize Lenis with GSAP's ScrollTrigger
-lenis.on('scroll', ScrollTrigger.update);
-
-gsap.ticker.add((time) => {
-  lenis.raf(time * 1000);
-});
-
-gsap.ticker.lagSmoothing(0);
+// Global Lenis instance
+let lenis;
 
 // Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
-  // Register GSAP plugins
+  // Register GSAP plugins first
   gsap.registerPlugin(ScrollTrigger, CustomEase);
 
   // Custom eases
@@ -33,12 +15,44 @@ document.addEventListener('DOMContentLoaded', () => {
   CustomEase.create('blurEase', '0.65, 0, 0.35, 1');
   CustomEase.create('svgEase', '0.25, 0.1, 0.25, 1');
 
+  // Initialize Lenis for smooth scrolling
+  lenis = new Lenis({
+    duration: 1.4,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    orientation: 'vertical',
+    gestureOrientation: 'vertical',
+    smoothWheel: true,
+    wheelMultiplier: 0.8,
+    touchMultiplier: 1.5,
+    infinite: false,
+  });
+
+  // Make lenis globally available
+  window.lenis = lenis;
+
+  // Synchronize Lenis with GSAP's ScrollTrigger
+  lenis.on('scroll', ScrollTrigger.update);
+
+  // Add Lenis to GSAP ticker
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
+
+  // Disable lag smoothing in GSAP
+  gsap.ticker.lagSmoothing(0);
+
   // Initialize all animations after landing animation completes
   window.initMainAnimations = function() {
-    initHeroAnimations();
-    initStatsAnimations();
-    initSectionAnimations();
-    initFooterAnimations();
+    // Small delay to ensure DOM is ready
+    setTimeout(() => {
+      initHeroAnimations();
+      initStatsAnimations();
+      initSectionAnimations();
+      initFooterAnimations();
+      
+      // Refresh ScrollTrigger after all animations are set up
+      ScrollTrigger.refresh();
+    }, 200);
   };
 
   // Hero section animations
@@ -219,11 +233,14 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
+      const targetId = this.getAttribute('href');
+      const target = document.querySelector(targetId);
+      
+      if (target && lenis) {
         lenis.scrollTo(target, {
-          offset: -100,
-          duration: 1.5
+          offset: 0,
+          duration: 2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
         });
       }
     });
