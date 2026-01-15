@@ -1,0 +1,403 @@
+/* ========================================
+   MAIN STYLES - Global Design System
+   ======================================== */
+
+:root {
+  --accent-color: #ff6b35;
+  --accent-color-dark: #e55a2b;
+  --offwhite: #f5f5f0;
+  --offblack: #2a2a28;
+  --grey: #6b6b6b;
+  --grey-light: rgba(42, 42, 40, 0.1);
+  --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Font Face */
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('https://cdn.prod.website-files.com/6819ed8312518f61b84824df/6819ed8312518f61b84825ba_PPNeueMontreal-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Reset & Base */
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: calc(100vw / 1512 * 10);
+  scrollbar-color: var(--accent-color) transparent;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: calc(100vw / 375 * 10);
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border-radius: 3px;
+}
+
+body {
+  font-family: 'PP Neue Montreal', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--offwhite);
+  color: var(--offblack);
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+/* Background Noise Effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: transparent url("http://assets.iceable.com/img/noise-transparent.png") repeat 0 0;
+  background-size: 300px 300px;
+  animation: noise-animation 0.3s steps(5) infinite;
+  opacity: 0.7;
+  will-change: transform;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+@keyframes noise-animation {
+  0% { transform: translate(0, 0); }
+  10% { transform: translate(-2%, -3%); }
+  20% { transform: translate(-4%, 2%); }
+  30% { transform: translate(2%, -4%); }
+  40% { transform: translate(-2%, 5%); }
+  50% { transform: translate(-4%, 2%); }
+  60% { transform: translate(3%, 0); }
+  70% { transform: translate(0, 3%); }
+  80% { transform: translate(-3%, 0); }
+  90% { transform: translate(2%, 2%); }
+  100% { transform: translate(1%, 0); }
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'PP Neue Montreal', 'Manrope', sans-serif;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--offblack);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s var(--transition-smooth);
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--accent-color);
+  color: var(--offwhite);
+}
+
+/* Wrapper */
+.wrapper {
+  width: 100%;
+  position: relative;
+}
+
+/* Container & Grid System */
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+
+.row-svg {
+  margin-top: 10rem;
+  margin-bottom: 4rem;
+}
+
+.row-content {
+  height: calc(100% - 14rem);
+  align-items: end;
+  margin-bottom: 2rem;
+}
+
+.col-1 { grid-column: span 1; }
+.col-2 { grid-column: span 2; }
+.col-3 { grid-column: span 3; }
+.col-4 { grid-column: span 4; }
+.col-5 { grid-column: span 5; }
+.col-6 { grid-column: span 6; }
+.col-7 { grid-column: span 7; }
+.col-8 { grid-column: span 8; }
+.col-9 { grid-column: span 9; }
+.col-10 { grid-column: span 10; }
+.col-11 { grid-column: span 11; }
+.col-12 { grid-column: span 12; }
+
+@media (max-width: 991px) {
+  .col-4, .col-5 {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 768px) {
+  .col-4, .col-5 {
+    grid-column: span 12;
+  }
+  .col-3 {
+    display: none;
+  }
+}
+
+/* Section Headers */
+.section-header {
+  text-align: center;
+  margin-bottom: 6rem;
+}
+
+.section-title {
+  font-size: clamp(4rem, 8vw, 8rem);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(3rem);
+  filter: blur(5px);
+}
+
+.section-subtitle {
+  font-size: 1.6rem;
+  color: var(--grey);
+  font-weight: 400;
+  opacity: 0;
+  transform: translateY(2rem);
+  filter: blur(3px);
+}
+
+/* Main Section / About */
+.main-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 10rem 0;
+}
+
+.svg-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.svg-container svg {
+  display: block;
+}
+
+.svg-texture-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://cdn.cosmos.so/00c1aedd-73e6-4e74-a278-2252a626bbff?format=jpeg");
+  background-position: center;
+  background-size: contain;
+  mix-blend-mode: screen;
+  opacity: 0.5;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-left {
+  position: relative;
+}
+
+.hero-image {
+  width: 100%;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.8);
+  transform-origin: bottom;
+  position: relative;
+  filter: blur(8px);
+  border-radius: 4px;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  filter: grayscale(100%);
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+  transition: filter 0.5s var(--transition-smooth);
+}
+
+.hero-image:hover img {
+  filter: grayscale(0%);
+}
+
+.texture-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://cdn.cosmos.so/00c1aedd-73e6-4e74-a278-2252a626bbff?format=jpeg");
+  background-position: top right;
+  background-size: cover;
+  mix-blend-mode: screen;
+  opacity: 0.15;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-right {
+  padding-left: 2rem;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .hero-right {
+    text-align: left;
+    padding-left: 0;
+    margin-top: 4rem;
+  }
+}
+
+.about-text {
+  font-size: 1.8rem;
+  line-height: 1.7;
+  font-weight: 400;
+  opacity: 0;
+  transform: translateY(5rem);
+  filter: blur(5px);
+}
+
+/* Stats Section */
+.stats-section {
+  padding: 8rem 0;
+  background: linear-gradient(
+    to bottom,
+    var(--offwhite) 0%,
+    rgba(255, 107, 53, 0.03) 50%,
+    var(--offwhite) 100%
+  );
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4rem;
+  text-align: center;
+}
+
+@media (max-width: 991px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.stat-item {
+  padding: 3rem 2rem;
+  opacity: 0;
+  transform: translateY(3rem);
+}
+
+.stat-number {
+  font-size: clamp(4rem, 8vw, 6rem);
+  font-weight: 500;
+  color: var(--accent-color);
+  display: inline-block;
+  line-height: 1;
+}
+
+.stat-plus {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: var(--accent-color);
+  vertical-align: top;
+  margin-left: 0.2rem;
+}
+
+.stat-label {
+  display: block;
+  font-size: 1.4rem;
+  color: var(--grey);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 1rem;
+}
+
+/* Smooth Scroll Indicator hidden by default */
+.scroll-indicator-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--accent-color);
+  width: 0%;
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
+
+/* Utility Classes */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -1,0 +1,225 @@
+/* ========================================
+   EXPERIENCE SECTION STYLES
+   ======================================== */
+
+.experience-section {
+  padding: 10rem 0;
+  min-height: 100vh;
+}
+
+.experience-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: experience-counter;
+}
+
+.experience-item {
+  border-bottom: 1px solid var(--grey-light);
+  position: relative;
+  counter-increment: experience-counter;
+  overflow: hidden;
+}
+
+.experience-item::before {
+  content: counter(experience-counter, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 2.5rem;
+  font-size: 1.2rem;
+  font-family: 'PP Neue Montreal', monospace;
+  color: var(--grey);
+  font-weight: 400;
+  opacity: 0.5;
+  transition: all 0.3s var(--transition-smooth);
+}
+
+.experience-item:hover::before,
+.experience-item.is-expanded::before {
+  color: var(--accent-color);
+  opacity: 1;
+}
+
+.experience-header {
+  padding: 2rem 0 2rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.3s var(--transition-smooth);
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .experience-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding-left: 3rem;
+  }
+}
+
+.experience-header::after {
+  content: '+';
+  font-size: 2rem;
+  color: var(--grey);
+  transition: all 0.3s var(--transition-smooth);
+  font-weight: 300;
+}
+
+.experience-item.is-expanded .experience-header::after {
+  content: '−';
+  color: var(--accent-color);
+}
+
+.experience-header:hover {
+  padding-left: 5rem;
+}
+
+@media (max-width: 768px) {
+  .experience-header:hover {
+    padding-left: 3.5rem;
+  }
+}
+
+.experience-title {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 500;
+  color: var(--offblack);
+  transition: color 0.3s var(--transition-smooth);
+}
+
+.experience-item:hover .experience-title,
+.experience-item.is-expanded .experience-title {
+  color: var(--accent-color);
+}
+
+.experience-date {
+  font-size: 1.4rem;
+  color: var(--grey);
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+/* Expandable Content */
+.experience-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  opacity: 0;
+}
+
+@media (max-width: 991px) {
+  .experience-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .experience-content {
+    padding: 0 3rem;
+  }
+}
+
+.experience-item.is-expanded .experience-content {
+  max-height: 50rem;
+  padding: 0 4rem 3rem;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .experience-item.is-expanded .experience-content {
+    padding: 0 3rem 2rem;
+    max-height: 70rem;
+  }
+}
+
+.experience-details {
+  padding-right: 2rem;
+}
+
+@media (max-width: 991px) {
+  .experience-details {
+    padding-right: 0;
+  }
+}
+
+.experience-company {
+  font-size: 1.4rem;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.experience-description {
+  font-size: 1.5rem;
+  line-height: 1.7;
+  color: var(--grey);
+  font-weight: 400;
+}
+
+/* Gallery */
+.experience-gallery {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  height: 15rem;
+}
+
+@media (max-width: 991px) {
+  .experience-gallery {
+    height: 20rem;
+  }
+}
+
+.gallery-track {
+  display: flex;
+  gap: 1rem;
+  height: 100%;
+  animation: scroll-gallery 15s linear infinite;
+}
+
+@keyframes scroll-gallery {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.gallery-track img {
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+  border-radius: 4px;
+  filter: grayscale(100%);
+  transition: filter 0.5s var(--transition-smooth);
+  flex-shrink: 0;
+}
+
+.experience-item.is-expanded .gallery-track img:hover {
+  filter: grayscale(0%);
+}
+
+/* Hover Effects for List */
+.experience-item {
+  opacity: 1;
+  transition: opacity 0.3s var(--transition-smooth);
+}
+
+.experience-list:hover .experience-item:not(:hover):not(.is-expanded) {
+  opacity: 0.4;
+}
+
+.experience-list:has(.experience-item.is-expanded) .experience-item:not(.is-expanded) {
+  opacity: 0.4;
+}
