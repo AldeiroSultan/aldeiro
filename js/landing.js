@@ -20,32 +20,26 @@ function initLandingAnimation() {
   const headerLetter = container.querySelectorAll('.landing__letter-white');
   const navLinks = container.querySelectorAll('.landing-nav__link, .landing-credits__p');
 
-  // GSAP Timeline
   const tl = gsap.timeline({
     defaults: {
       ease: 'expo.inOut',
     },
     onStart: () => {
       container.classList.remove('is--hidden');
-      // Disable scroll during animation
       document.body.style.overflow = 'hidden';
       
-      // Also stop Lenis if it exists
       if (window.lenis) {
         window.lenis.stop();
       }
     },
     onComplete: () => {
-      // Enable scroll after animation
       document.body.style.overflow = '';
       container.classList.remove('is--loading');
       
-      // Start Lenis
       if (window.lenis) {
         window.lenis.start();
       }
       
-      // Initialize main page animations after landing completes
       if (typeof window.initMainAnimations === 'function') {
         setTimeout(() => {
           window.initMainAnimations();
@@ -54,7 +48,6 @@ function initLandingAnimation() {
     }
   });
 
-  // Start of Timeline - Letters animate up
   if (loadingLetter.length) {
     tl.from(loadingLetter, {
       yPercent: 100,
@@ -63,7 +56,6 @@ function initLandingAnimation() {
     });
   }
 
-  // Box expands
   if (box.length) {
     tl.fromTo(box, {
       width: '0em',
@@ -73,7 +65,6 @@ function initLandingAnimation() {
     }, '< 1');
   }
 
-  // Image grows inside box
   if (growingImage.length) {
     tl.fromTo(growingImage, {
       width: '0%',
@@ -83,7 +74,6 @@ function initLandingAnimation() {
     }, '<');
   }
 
-  // Letters spread apart - Sultan goes left, Aldeiro goes right
   if (headingStart.length) {
     tl.fromTo(headingStart, {
       x: '0em',
@@ -102,7 +92,6 @@ function initLandingAnimation() {
     }, '<');
   }
 
-  // Image layer transitions (flash effect)
   if (coverImageExtra.length) {
     tl.fromTo(coverImageExtra, {
       opacity: 1,
@@ -114,7 +103,6 @@ function initLandingAnimation() {
     }, '-=0.2');
   }
 
-  // Image expands to full screen
   if (growingImage.length) {
     tl.to(growingImage, {
       width: '100vw',
@@ -130,7 +118,6 @@ function initLandingAnimation() {
     }, '<');
   }
 
-  // White letters animate in at the bottom
   if (headerLetter.length) {
     tl.from(headerLetter, {
       yPercent: 100,
@@ -140,7 +127,6 @@ function initLandingAnimation() {
     }, '< 1');
   }
 
-  // Nav links animate in
   if (navLinks.length) {
     tl.from(navLinks, {
       yPercent: 100,

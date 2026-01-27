@@ -17,13 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize Lenis for smooth scrolling
   lenis = new Lenis({
-    duration: 1.4,
+    duration: 1.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     orientation: 'vertical',
     gestureOrientation: 'vertical',
     smoothWheel: true,
-    wheelMultiplier: 0.8,
-    touchMultiplier: 1.5,
+    wheelMultiplier: 1,
+    touchMultiplier: 2,
     infinite: false,
   });
 
@@ -43,14 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize all animations after landing animation completes
   window.initMainAnimations = function() {
-    // Small delay to ensure DOM is ready
     setTimeout(() => {
       initHeroAnimations();
       initStatsAnimations();
       initSectionAnimations();
       initFooterAnimations();
-      
-      // Refresh ScrollTrigger after all animations are set up
       ScrollTrigger.refresh();
     }, 200);
   };
@@ -105,7 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Counter animation
     const counters = document.querySelectorAll('.stat-number');
     
     counters.forEach((counter) => {
@@ -200,7 +196,6 @@ document.addEventListener('DOMContentLoaded', () => {
       onLeaveBack: () => footerTl.reverse()
     });
 
-    // Footer CTA animation
     gsap.to('.footer-cta', {
       scrollTrigger: {
         trigger: '.footer',
@@ -214,7 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
       ease: 'verticalEase'
     });
 
-    // Social links animation
     gsap.to('.footer-social', {
       scrollTrigger: {
         trigger: '.footer',
@@ -232,6 +226,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Smooth scroll to anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
+      if (this.classList.contains('dropdown__button')) return;
+      
       e.preventDefault();
       const targetId = this.getAttribute('href');
       const target = document.querySelector(targetId);
@@ -239,8 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (target && lenis) {
         lenis.scrollTo(target, {
           offset: 0,
-          duration: 2,
-          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+          duration: 1.5
         });
       }
     });

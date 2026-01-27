@@ -35,7 +35,6 @@ html {
   font-size: calc(100vw / 1512 * 10);
   scrollbar-color: var(--accent-color) transparent;
   scrollbar-width: thin;
-  scroll-behavior: smooth;
 }
 
 @media (max-width: 768px) {
@@ -327,6 +326,30 @@ a:hover {
   );
 }
 
+.stats-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.stats-title {
+  font-size: clamp(3rem, 6vw, 6rem);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(3rem);
+  filter: blur(5px);
+}
+
+.stats-subtitle {
+  font-size: 1.6rem;
+  color: var(--grey);
+  font-weight: 400;
+  opacity: 0;
+  transform: translateY(2rem);
+  filter: blur(3px);
+}
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -375,18 +398,6 @@ a:hover {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-top: 1rem;
-}
-
-/* Smooth Scroll Indicator hidden by default */
-.scroll-indicator-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  background: var(--accent-color);
-  width: 0%;
-  z-index: 9999;
-  transition: width 0.1s linear;
 }
 
 /* Utility Classes */
