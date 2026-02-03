@@ -166,6 +166,31 @@
   font-weight: 400;
 }
 
+.experience-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.experience-points li {
+  font-size: 1.5rem;
+  line-height: 1.7;
+  color: var(--grey);
+  font-weight: 400;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.experience-points li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent-color);
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
 /* Gallery */
 .experience-gallery {
   position: relative;
