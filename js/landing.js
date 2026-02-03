@@ -19,6 +19,7 @@ function initLandingAnimation() {
   const coverImageExtra = container.querySelectorAll('.landing__cover-image-extra');
   const headerLetter = container.querySelectorAll('.landing__letter-white');
   const navLinks = container.querySelectorAll('.landing-nav__link, .landing-credits__p');
+  const nameOverlay = container.querySelector('.landing-name-text');
 
   const tl = gsap.timeline({
     defaults: {
@@ -48,6 +49,7 @@ function initLandingAnimation() {
     }
   });
 
+  // Animate letters coming in
   if (loadingLetter.length) {
     tl.from(loadingLetter, {
       yPercent: 100,
@@ -56,6 +58,7 @@ function initLandingAnimation() {
     });
   }
 
+  // Expand the box between Sultan and Aldeiro
   if (box.length) {
     tl.fromTo(box, {
       width: '0em',
@@ -65,6 +68,7 @@ function initLandingAnimation() {
     }, '< 1');
   }
 
+  // Grow the image inside the box
   if (growingImage.length) {
     tl.fromTo(growingImage, {
       width: '0%',
@@ -74,24 +78,27 @@ function initLandingAnimation() {
     }, '<');
   }
 
+  // Push "Sultan" to the left
   if (headingStart.length) {
     tl.fromTo(headingStart, {
       x: '0em',
     }, {
-      x: '-0.08em',
+      x: '-0.12em',
       duration: 1.25
     }, '<');
   }
 
+  // Push "Aldeiro" to the right
   if (headingEnd.length) {
     tl.fromTo(headingEnd, {
       x: '0em',
     }, {
-      x: '0.08em',
+      x: '0.12em',
       duration: 1.25
     }, '<');
   }
 
+  // Fade out the extra images (loading1, 2, 3)
   if (coverImageExtra.length) {
     tl.fromTo(coverImageExtra, {
       opacity: 1,
@@ -103,6 +110,7 @@ function initLandingAnimation() {
     }, '-=0.2');
   }
 
+  // Expand image to full viewport
   if (growingImage.length) {
     tl.to(growingImage, {
       width: '100vw',
@@ -118,15 +126,28 @@ function initLandingAnimation() {
     }, '<');
   }
 
+  // Animate the name overlay appearing over the landscape
+  if (nameOverlay) {
+    tl.to(nameOverlay, {
+      opacity: 1,
+      y: 0,
+      filter: 'blur(0px)',
+      duration: 1.5,
+      ease: 'expo.out'
+    }, '-=1.2');
+  }
+
+  // Animate bottom letters
   if (headerLetter.length) {
     tl.from(headerLetter, {
       yPercent: 100,
       duration: 1.25,
       ease: 'expo.out',
       stagger: 0.03
-    }, '< 1');
+    }, '< 0.5');
   }
 
+  // Animate nav links
   if (navLinks.length) {
     tl.from(navLinks, {
       yPercent: 100,

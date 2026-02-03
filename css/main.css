@@ -187,7 +187,7 @@ a:hover {
   .col-4, .col-5 {
     grid-column: span 12;
   }
-  .col-3 {
+  .col-2, .col-3 {
     display: none;
   }
 }
@@ -294,25 +294,40 @@ a:hover {
 }
 
 .hero-right {
-  padding-left: 2rem;
+  padding-left: 0;
   text-align: right;
+  display: flex;
+  align-items: flex-end;
 }
 
 @media (max-width: 768px) {
   .hero-right {
     text-align: left;
-    padding-left: 0;
     margin-top: 4rem;
   }
 }
 
+/* About text - made bigger and adjusted spacing */
 .about-text {
-  font-size: 1.8rem;
-  line-height: 1.7;
+  font-size: 2.2rem;
+  line-height: 1.6;
   font-weight: 400;
   opacity: 0;
   transform: translateY(5rem);
   filter: blur(5px);
+  max-width: 100%;
+}
+
+@media (max-width: 991px) {
+  .about-text {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-text {
+    font-size: 1.8rem;
+  }
 }
 
 /* Stats Section */
