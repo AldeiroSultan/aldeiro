@@ -164,6 +164,16 @@
   transform: rotate(90deg);
 }
 
+/* Close button SVG icon */
+.project-close svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  stroke: var(--offwhite);
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+}
+
 .project-expanded__content {
   display: grid;
   grid-template-columns: 1fr 1fr;

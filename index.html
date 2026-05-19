@@ -96,7 +96,6 @@
             </div>
           </div>
         </div>
-        <!-- Name overlay that appears after landscape -->
         <div class="landing-name-overlay">
           <h1 class="landing-name-text">Sultan Aldeiro</h1>
         </div>
@@ -250,8 +249,7 @@
           </li>
           <li class="experience-item" data-index="2">
             <div class="experience-header">
-              <span class="experience-title">Software Engineer
-              </span>
+              <span class="experience-title">Software Engineer</span>
               <span class="experience-date">Sep 2024 - May 2025</span>
             </div>
             <div class="experience-content">
@@ -299,7 +297,7 @@
       </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Projects Section - 3x3 Grid (9 cards) -->
     <section id="projects" class="projects-section">
       <div class="container">
         <div class="section-header">
@@ -311,7 +309,7 @@
           <!-- Project 0: E-Commerce Platform -->
           <div class="project-card" data-project="0">
             <div class="project-card__image">
-              <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=400&fit=crop" alt="Project 1">
+              <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=400&fit=crop" alt="E-Commerce Platform">
               <div class="project-card__overlay"></div>
             </div>
             <div class="project-card__info">
@@ -319,7 +317,7 @@
               <h3 class="project-card__title">E-Commerce Platform</h3>
             </div>
             <div class="project-card__expanded">
-              <button class="project-close">&times;</button>
+              <button class="project-close" aria-label="Close"><svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
               <div class="project-expanded__content">
                 <div class="project-carousel" data-images='["https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=500&fit=crop","https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=500&fit=crop","https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=500&fit=crop"]'>
                   <div class="project-carousel__viewport">
@@ -331,22 +329,13 @@
                     <button class="project-carousel__btn project-carousel__btn--up" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="6 15 12 9 18 15"/></svg></button>
                     <button class="project-carousel__btn project-carousel__btn--down" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
                   </div>
-                  <div class="project-carousel__dots">
-                    <button class="project-carousel__dot is-active"></button>
-                    <button class="project-carousel__dot"></button>
-                    <button class="project-carousel__dot"></button>
-                  </div>
+                  <div class="project-carousel__dots"><button class="project-carousel__dot is-active"></button><button class="project-carousel__dot"></button><button class="project-carousel__dot"></button></div>
                 </div>
                 <div class="project-expanded__details">
                   <span class="project-expanded__category">Web Application</span>
                   <h2 class="project-expanded__title">E-Commerce Platform</h2>
                   <p class="project-expanded__description">A full-featured e-commerce platform built with React and Node.js. Features include real-time inventory management, secure payment processing with Stripe, and an AI-powered recommendation engine. The platform handles 10,000+ daily transactions with sub-second response times.</p>
-                  <div class="project-expanded__tech">
-                    <span>React</span>
-                    <span>Node.js</span>
-                    <span>PostgreSQL</span>
-                    <span>Stripe</span>
-                  </div>
+                  <div class="project-expanded__tech"><span>React</span><span>Node.js</span><span>PostgreSQL</span><span>Stripe</span></div>
                   <a href="#" class="project-expanded__link" target="_blank">View Project →</a>
                 </div>
               </div>
@@ -356,7 +345,7 @@
           <!-- Project 1: Fitness Tracker -->
           <div class="project-card" data-project="1">
             <div class="project-card__image">
-              <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=400&fit=crop" alt="Project 2">
+              <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=400&fit=crop" alt="Fitness Tracker">
               <div class="project-card__overlay"></div>
             </div>
             <div class="project-card__info">
@@ -364,7 +353,7 @@
               <h3 class="project-card__title">Fitness Tracker</h3>
             </div>
             <div class="project-card__expanded">
-              <button class="project-close">&times;</button>
+              <button class="project-close" aria-label="Close"><svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
               <div class="project-expanded__content">
                 <div class="project-carousel" data-images='["https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&h=500&fit=crop","https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=800&h=500&fit=crop","https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=500&fit=crop"]'>
                   <div class="project-carousel__viewport">
@@ -376,21 +365,13 @@
                     <button class="project-carousel__btn project-carousel__btn--up" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="6 15 12 9 18 15"/></svg></button>
                     <button class="project-carousel__btn project-carousel__btn--down" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
                   </div>
-                  <div class="project-carousel__dots">
-                    <button class="project-carousel__dot is-active"></button>
-                    <button class="project-carousel__dot"></button>
-                    <button class="project-carousel__dot"></button>
-                  </div>
+                  <div class="project-carousel__dots"><button class="project-carousel__dot is-active"></button><button class="project-carousel__dot"></button><button class="project-carousel__dot"></button></div>
                 </div>
                 <div class="project-expanded__details">
                   <span class="project-expanded__category">Mobile App</span>
                   <h2 class="project-expanded__title">Fitness Tracker</h2>
                   <p class="project-expanded__description">A comprehensive fitness tracking application with workout planning, progress analytics, and social features. Integrates with wearable devices for real-time health monitoring. Features custom workout builders and AI-generated fitness plans based on user goals.</p>
-                  <div class="project-expanded__tech">
-                    <span>React Native</span>
-                    <span>Firebase</span>
-                    <span>TensorFlow</span>
-                  </div>
+                  <div class="project-expanded__tech"><span>React Native</span><span>Firebase</span><span>TensorFlow</span></div>
                   <a href="#" class="project-expanded__link" target="_blank">View Project →</a>
                 </div>
               </div>
@@ -400,7 +381,7 @@
           <!-- Project 2: Analytics Dashboard -->
           <div class="project-card" data-project="2">
             <div class="project-card__image">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Project 3">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Analytics Dashboard">
               <div class="project-card__overlay"></div>
             </div>
             <div class="project-card__info">
@@ -408,7 +389,7 @@
               <h3 class="project-card__title">Analytics Dashboard</h3>
             </div>
             <div class="project-card__expanded">
-              <button class="project-close">&times;</button>
+              <button class="project-close" aria-label="Close"><svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
               <div class="project-expanded__content">
                 <div class="project-carousel" data-images='["https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop","https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop","https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=500&fit=crop"]'>
                   <div class="project-carousel__viewport">
@@ -420,22 +401,13 @@
                     <button class="project-carousel__btn project-carousel__btn--up" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="6 15 12 9 18 15"/></svg></button>
                     <button class="project-carousel__btn project-carousel__btn--down" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
                   </div>
-                  <div class="project-carousel__dots">
-                    <button class="project-carousel__dot is-active"></button>
-                    <button class="project-carousel__dot"></button>
-                    <button class="project-carousel__dot"></button>
-                  </div>
+                  <div class="project-carousel__dots"><button class="project-carousel__dot is-active"></button><button class="project-carousel__dot"></button><button class="project-carousel__dot"></button></div>
                 </div>
                 <div class="project-expanded__details">
                   <span class="project-expanded__category">Data Visualization</span>
                   <h2 class="project-expanded__title">Analytics Dashboard</h2>
                   <p class="project-expanded__description">An interactive analytics dashboard for business intelligence. Features real-time data streaming, customizable widgets, and exportable reports. Built with D3.js for stunning visualizations and WebSocket for live updates.</p>
-                  <div class="project-expanded__tech">
-                    <span>D3.js</span>
-                    <span>Vue.js</span>
-                    <span>WebSocket</span>
-                    <span>Python</span>
-                  </div>
+                  <div class="project-expanded__tech"><span>D3.js</span><span>Vue.js</span><span>WebSocket</span><span>Python</span></div>
                   <a href="#" class="project-expanded__link" target="_blank">View Project →</a>
                 </div>
               </div>
@@ -445,7 +417,7 @@
           <!-- Project 3: Dev Tools CLI -->
           <div class="project-card" data-project="3">
             <div class="project-card__image">
-              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop" alt="Project 4">
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop" alt="Dev Tools CLI">
               <div class="project-card__overlay"></div>
             </div>
             <div class="project-card__info">
@@ -453,7 +425,7 @@
               <h3 class="project-card__title">Dev Tools CLI</h3>
             </div>
             <div class="project-card__expanded">
-              <button class="project-close">&times;</button>
+              <button class="project-close" aria-label="Close"><svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
               <div class="project-expanded__content">
                 <div class="project-carousel" data-images='["https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=500&fit=crop","https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=500&fit=crop","https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=500&fit=crop"]'>
                   <div class="project-carousel__viewport">
@@ -465,21 +437,13 @@
                     <button class="project-carousel__btn project-carousel__btn--up" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="6 15 12 9 18 15"/></svg></button>
                     <button class="project-carousel__btn project-carousel__btn--down" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
                   </div>
-                  <div class="project-carousel__dots">
-                    <button class="project-carousel__dot is-active"></button>
-                    <button class="project-carousel__dot"></button>
-                    <button class="project-carousel__dot"></button>
-                  </div>
+                  <div class="project-carousel__dots"><button class="project-carousel__dot is-active"></button><button class="project-carousel__dot"></button><button class="project-carousel__dot"></button></div>
                 </div>
                 <div class="project-expanded__details">
                   <span class="project-expanded__category">Open Source</span>
                   <h2 class="project-expanded__title">Dev Tools CLI</h2>
                   <p class="project-expanded__description">A powerful command-line toolkit for developers featuring project scaffolding, automated testing setup, and deployment scripts. Published on npm with 5,000+ weekly downloads. Includes plugins for major frameworks and customizable templates.</p>
-                  <div class="project-expanded__tech">
-                    <span>Node.js</span>
-                    <span>TypeScript</span>
-                    <span>Shell</span>
-                  </div>
+                  <div class="project-expanded__tech"><span>Node.js</span><span>TypeScript</span><span>Shell</span></div>
                   <a href="#" class="project-expanded__link" target="_blank">View Project →</a>
                 </div>
               </div>
@@ -489,7 +453,7 @@
           <!-- Project 4: Content Generator -->
           <div class="project-card" data-project="4">
             <div class="project-card__image">
-              <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=400&fit=crop" alt="Project 5">
+              <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=400&fit=crop" alt="Content Generator">
               <div class="project-card__overlay"></div>
             </div>
             <div class="project-card__info">
@@ -497,7 +461,7 @@
               <h3 class="project-card__title">Content Generator</h3>
             </div>
             <div class="project-card__expanded">
-              <button class="project-close">&times;</button>
+              <button class="project-close" aria-label="Close"><svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
               <div class="project-expanded__content">
                 <div class="project-carousel" data-images='["https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=500&fit=crop","https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=500&fit=crop","https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=500&fit=crop"]'>
                   <div class="project-carousel__viewport">
@@ -509,22 +473,157 @@
                     <button class="project-carousel__btn project-carousel__btn--up" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="6 15 12 9 18 15"/></svg></button>
                     <button class="project-carousel__btn project-carousel__btn--down" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
                   </div>
-                  <div class="project-carousel__dots">
-                    <button class="project-carousel__dot is-active"></button>
-                    <button class="project-carousel__dot"></button>
-                    <button class="project-carousel__dot"></button>
-                  </div>
+                  <div class="project-carousel__dots"><button class="project-carousel__dot is-active"></button><button class="project-carousel__dot"></button><button class="project-carousel__dot"></button></div>
                 </div>
                 <div class="project-expanded__details">
                   <span class="project-expanded__category">AI/ML</span>
                   <h2 class="project-expanded__title">Content Generator</h2>
                   <p class="project-expanded__description">An AI-powered content generation platform using GPT models for creating marketing copy, blog posts, and social media content. Features brand voice customization, SEO optimization, and multi-language support.</p>
-                  <div class="project-expanded__tech">
-                    <span>Python</span>
-                    <span>OpenAI API</span>
-                    <span>FastAPI</span>
-                    <span>React</span>
+                  <div class="project-expanded__tech"><span>Python</span><span>OpenAI API</span><span>FastAPI</span><span>React</span></div>
+                  <a href="#" class="project-expanded__link" target="_blank">View Project →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5: Portfolio Website -->
+          <div class="project-card" data-project="5">
+            <div class="project-card__image">
+              <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=400&fit=crop" alt="Portfolio Website">
+              <div class="project-card__overlay"></div>
+            </div>
+            <div class="project-card__info">
+              <span class="project-card__category">Web Design</span>
+              <h3 class="project-card__title">Portfolio Website</h3>
+            </div>
+            <div class="project-card__expanded">
+              <button class="project-close" aria-label="Close"><svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+              <div class="project-expanded__content">
+                <div class="project-carousel" data-images='["https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=500&fit=crop","https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=800&h=500&fit=crop","https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=500&fit=crop"]'>
+                  <div class="project-carousel__viewport">
+                    <div class="project-carousel__slot project-carousel__slot--top"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=500&fit=crop" alt=""></div>
+                    <div class="project-carousel__slot project-carousel__slot--center"><img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=500&fit=crop" alt=""></div>
+                    <div class="project-carousel__slot project-carousel__slot--bottom"><img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=800&h=500&fit=crop" alt=""></div>
                   </div>
+                  <div class="project-carousel__nav">
+                    <button class="project-carousel__btn project-carousel__btn--up" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="6 15 12 9 18 15"/></svg></button>
+                    <button class="project-carousel__btn project-carousel__btn--down" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+                  </div>
+                  <div class="project-carousel__dots"><button class="project-carousel__dot is-active"></button><button class="project-carousel__dot"></button><button class="project-carousel__dot"></button></div>
+                </div>
+                <div class="project-expanded__details">
+                  <span class="project-expanded__category">Web Design</span>
+                  <h2 class="project-expanded__title">Portfolio Website</h2>
+                  <p class="project-expanded__description">A personal portfolio built from scratch with GSAP animations, Lenis smooth scroll, and modular CSS. Features a cinematic landing animation, expandable experience accordion, and a 3x3 project grid with contextual expansion. Designed for editorial aesthetics with grayscale imagery and noise textures.</p>
+                  <div class="project-expanded__tech"><span>HTML/CSS</span><span>JavaScript</span><span>GSAP</span><span>Lenis</span></div>
+                  <a href="#" class="project-expanded__link" target="_blank">View Project →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 6: Weather Dashboard -->
+          <div class="project-card" data-project="6">
+            <div class="project-card__image">
+              <img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?w=600&h=400&fit=crop" alt="Weather Dashboard">
+              <div class="project-card__overlay"></div>
+            </div>
+            <div class="project-card__info">
+              <span class="project-card__category">API Integration</span>
+              <h3 class="project-card__title">Weather Dashboard</h3>
+            </div>
+            <div class="project-card__expanded">
+              <button class="project-close" aria-label="Close"><svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+              <div class="project-expanded__content">
+                <div class="project-carousel" data-images='["https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=500&fit=crop","https://images.unsplash.com/photo-1534088568595-a066f410bcda?w=800&h=500&fit=crop","https://images.unsplash.com/photo-1561484930-998b6a7b22e8?w=800&h=500&fit=crop"]'>
+                  <div class="project-carousel__viewport">
+                    <div class="project-carousel__slot project-carousel__slot--top"><img src="https://images.unsplash.com/photo-1561484930-998b6a7b22e8?w=800&h=500&fit=crop" alt=""></div>
+                    <div class="project-carousel__slot project-carousel__slot--center"><img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=500&fit=crop" alt=""></div>
+                    <div class="project-carousel__slot project-carousel__slot--bottom"><img src="https://images.unsplash.com/photo-1534088568595-a066f410bcda?w=800&h=500&fit=crop" alt=""></div>
+                  </div>
+                  <div class="project-carousel__nav">
+                    <button class="project-carousel__btn project-carousel__btn--up" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="6 15 12 9 18 15"/></svg></button>
+                    <button class="project-carousel__btn project-carousel__btn--down" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+                  </div>
+                  <div class="project-carousel__dots"><button class="project-carousel__dot is-active"></button><button class="project-carousel__dot"></button><button class="project-carousel__dot"></button></div>
+                </div>
+                <div class="project-expanded__details">
+                  <span class="project-expanded__category">API Integration</span>
+                  <h2 class="project-expanded__title">Weather Dashboard</h2>
+                  <p class="project-expanded__description">A real-time weather dashboard pulling data from multiple meteorological APIs. Features 7-day forecasts, interactive radar maps, severe weather alerts, and location-based auto-detection. Includes data caching for offline access and chart-based historical comparisons.</p>
+                  <div class="project-expanded__tech"><span>React</span><span>OpenWeather API</span><span>Chart.js</span><span>PWA</span></div>
+                  <a href="#" class="project-expanded__link" target="_blank">View Project →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 7: Task Manager -->
+          <div class="project-card" data-project="7">
+            <div class="project-card__image">
+              <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&h=400&fit=crop" alt="Task Manager">
+              <div class="project-card__overlay"></div>
+            </div>
+            <div class="project-card__info">
+              <span class="project-card__category">Productivity</span>
+              <h3 class="project-card__title">Task Manager</h3>
+            </div>
+            <div class="project-card__expanded">
+              <button class="project-close" aria-label="Close"><svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+              <div class="project-expanded__content">
+                <div class="project-carousel" data-images='["https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=500&fit=crop","https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=500&fit=crop","https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=800&h=500&fit=crop"]'>
+                  <div class="project-carousel__viewport">
+                    <div class="project-carousel__slot project-carousel__slot--top"><img src="https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=800&h=500&fit=crop" alt=""></div>
+                    <div class="project-carousel__slot project-carousel__slot--center"><img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=500&fit=crop" alt=""></div>
+                    <div class="project-carousel__slot project-carousel__slot--bottom"><img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=500&fit=crop" alt=""></div>
+                  </div>
+                  <div class="project-carousel__nav">
+                    <button class="project-carousel__btn project-carousel__btn--up" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="6 15 12 9 18 15"/></svg></button>
+                    <button class="project-carousel__btn project-carousel__btn--down" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+                  </div>
+                  <div class="project-carousel__dots"><button class="project-carousel__dot is-active"></button><button class="project-carousel__dot"></button><button class="project-carousel__dot"></button></div>
+                </div>
+                <div class="project-expanded__details">
+                  <span class="project-expanded__category">Productivity</span>
+                  <h2 class="project-expanded__title">Task Manager</h2>
+                  <p class="project-expanded__description">A Kanban-style task management application with drag-and-drop boards, real-time collaboration via WebSockets, and smart deadline tracking. Includes calendar integration, recurring task templates, and team workload analytics with exportable reports.</p>
+                  <div class="project-expanded__tech"><span>Next.js</span><span>MongoDB</span><span>Socket.io</span><span>Tailwind</span></div>
+                  <a href="#" class="project-expanded__link" target="_blank">View Project →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 8: Music Visualizer -->
+          <div class="project-card" data-project="8">
+            <div class="project-card__image">
+              <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&h=400&fit=crop" alt="Music Visualizer">
+              <div class="project-card__overlay"></div>
+            </div>
+            <div class="project-card__info">
+              <span class="project-card__category">Creative</span>
+              <h3 class="project-card__title">Music Visualizer</h3>
+            </div>
+            <div class="project-card__expanded">
+              <button class="project-close" aria-label="Close"><svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+              <div class="project-expanded__content">
+                <div class="project-carousel" data-images='["https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&h=500&fit=crop","https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&h=500&fit=crop","https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&h=500&fit=crop"]'>
+                  <div class="project-carousel__viewport">
+                    <div class="project-carousel__slot project-carousel__slot--top"><img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&h=500&fit=crop" alt=""></div>
+                    <div class="project-carousel__slot project-carousel__slot--center"><img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&h=500&fit=crop" alt=""></div>
+                    <div class="project-carousel__slot project-carousel__slot--bottom"><img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&h=500&fit=crop" alt=""></div>
+                  </div>
+                  <div class="project-carousel__nav">
+                    <button class="project-carousel__btn project-carousel__btn--up" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="6 15 12 9 18 15"/></svg></button>
+                    <button class="project-carousel__btn project-carousel__btn--down" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+                  </div>
+                  <div class="project-carousel__dots"><button class="project-carousel__dot is-active"></button><button class="project-carousel__dot"></button><button class="project-carousel__dot"></button></div>
+                </div>
+                <div class="project-expanded__details">
+                  <span class="project-expanded__category">Creative</span>
+                  <h2 class="project-expanded__title">Music Visualizer</h2>
+                  <p class="project-expanded__description">A WebGL-powered audio visualizer that transforms music into real-time 3D graphics. Uses the Web Audio API for frequency analysis and Three.js for immersive particle systems, waveforms, and spectrum displays. Supports microphone input and audio file uploads.</p>
+                  <div class="project-expanded__tech"><span>Three.js</span><span>Web Audio API</span><span>WebGL</span><span>GLSL</span></div>
                   <a href="#" class="project-expanded__link" target="_blank">View Project →</a>
                 </div>
               </div>

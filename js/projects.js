@@ -14,18 +14,18 @@ function initProjectsSection() {
   
   if (!projectCards.length) return;
 
-  // Initial reveal animation
+  // Reveal ALL cards when the projects section enters view
   projectCards.forEach((card, index) => {
     gsap.to(card, {
       scrollTrigger: {
-        trigger: card,
-        start: 'top bottom-=100',
+        trigger: projectsSection,
+        start: 'top 85%',
         toggleActions: 'play none none reverse'
       },
       opacity: 1,
       y: 0,
-      duration: 0.8,
-      delay: index * 0.1,
+      duration: 0.6,
+      delay: index * 0.06,
       ease: 'power2.out'
     });
   });
@@ -104,7 +104,6 @@ function initProjectsSection() {
     const btnUp = carousel.querySelector('.project-carousel__btn--up');
     const btnDown = carousel.querySelector('.project-carousel__btn--down');
 
-    // Gather image URLs from data attribute
     let images = [];
     try {
       images = JSON.parse(carousel.dataset.images);
@@ -115,7 +114,7 @@ function initProjectsSection() {
     if (images.length < 2) return null;
 
     const total = images.length;
-    let currentIndex = 0; // center image index
+    let currentIndex = 0;
     let isAnimating = false;
 
     function wrap(i) {
@@ -141,21 +140,15 @@ function initProjectsSection() {
       isAnimating = true;
 
       const newCenter = wrap(newIndex);
-      // direction: 'down' = scrolling to next, 'up' = scrolling to prev
       const slideDistance = direction === 'down' ? -40 : 40;
 
-      // Animate all 3 slots out
       const tl = gsap.timeline({
         onComplete: () => {
-          // Swap images
           currentIndex = newCenter;
           setSlotImages(currentIndex);
           updateDots(currentIndex);
 
-          // Reset positions
           gsap.set([slotTop, slotCenter, slotBottom], { y: 0, opacity: 1 });
-
-          // Re-apply correct visual states
           gsap.set(slotTop, { opacity: 0.4 });
           gsap.set(slotTop.querySelector('img'), { filter: 'grayscale(100%)' });
           gsap.set(slotCenter, { opacity: 1 });
@@ -163,7 +156,6 @@ function initProjectsSection() {
           gsap.set(slotBottom, { opacity: 0.4 });
           gsap.set(slotBottom.querySelector('img'), { filter: 'grayscale(100%)' });
 
-          // Animate in from opposite direction
           gsap.fromTo([slotTop, slotCenter, slotBottom], 
             { y: -slideDistance * 0.6, opacity: 0 },
             { 
@@ -185,45 +177,23 @@ function initProjectsSection() {
       });
     }
 
-    function goDown() {
-      goTo(currentIndex + 1, 'down');
-    }
+    function goDown() { goTo(currentIndex + 1, 'down'); }
+    function goUp() { goTo(currentIndex - 1, 'up'); }
 
-    function goUp() {
-      goTo(currentIndex - 1, 'up');
-    }
+    btnUp.addEventListener('click', (e) => { e.stopPropagation(); goUp(); });
+    btnDown.addEventListener('click', (e) => { e.stopPropagation(); goDown(); });
 
-    // Arrow buttons
-    btnUp.addEventListener('click', (e) => {
-      e.stopPropagation();
-      goUp();
-    });
-    btnDown.addEventListener('click', (e) => {
-      e.stopPropagation();
-      goDown();
-    });
-
-    // Dot clicks
     dots.forEach((dot, i) => {
       dot.addEventListener('click', (e) => {
         e.stopPropagation();
         if (i === currentIndex || isAnimating) return;
-        const dir = i > currentIndex ? 'down' : 'up';
-        goTo(i, dir);
+        goTo(i, i > currentIndex ? 'down' : 'up');
       });
     });
 
-    // Click on top/bottom slot to navigate
-    slotTop.addEventListener('click', (e) => {
-      e.stopPropagation();
-      goUp();
-    });
-    slotBottom.addEventListener('click', (e) => {
-      e.stopPropagation();
-      goDown();
-    });
+    slotTop.addEventListener('click', (e) => { e.stopPropagation(); goUp(); });
+    slotBottom.addEventListener('click', (e) => { e.stopPropagation(); goDown(); });
 
-    // Mouse wheel - infinite scroll
     let wheelCooldown = false;
     carousel.addEventListener('wheel', (e) => {
       e.preventDefault();
@@ -231,15 +201,9 @@ function initProjectsSection() {
       if (wheelCooldown || isAnimating) return;
       wheelCooldown = true;
       setTimeout(() => { wheelCooldown = false; }, 400);
-
-      if (e.deltaY > 0) {
-        goDown();
-      } else {
-        goUp();
-      }
+      if (e.deltaY > 0) { goDown(); } else { goUp(); }
     }, { passive: false });
 
-    // Initialize
     currentIndex = 0;
     setSlotImages(currentIndex);
     updateDots(currentIndex);
@@ -248,7 +212,6 @@ function initProjectsSection() {
   }
 
   function openProject(card, index) {
-    // Close any other open projects
     projectCards.forEach(otherCard => {
       if (otherCard !== card && otherCard.classList.contains('is-expanded')) {
         closeProject(otherCard);
@@ -267,83 +230,43 @@ function initProjectsSection() {
     card.style.gridRow = position.gridRow;
     card.style.transformOrigin = position.transformOrigin;
     
-    gsap.to(card, {
-      scale: 1,
-      zIndex: 10,
-      duration: 0.4,
-      ease: 'power2.out'
-    });
+    gsap.to(card, { scale: 1, zIndex: 10, duration: 0.4, ease: 'power2.out' });
 
-    // Fade other cards
     projectCards.forEach(otherCard => {
       if (otherCard !== card) {
-        gsap.to(otherCard, {
-          opacity: 0.3,
-          scale: 0.95,
-          duration: 0.3
-        });
+        gsap.to(otherCard, { opacity: 0.3, scale: 0.95, duration: 0.3 });
       }
     });
 
-    // Animate expanded content
     const expandedContent = card.querySelector('.project-card__expanded');
     const expandedDetails = card.querySelector('.project-expanded__details');
 
-    gsap.to(expandedContent, {
-      opacity: 1,
-      duration: 0.3,
-      delay: 0.2
-    });
+    gsap.to(expandedContent, { opacity: 1, duration: 0.3, delay: 0.2 });
 
-    // Animate details children in
     if (expandedDetails) {
-      gsap.fromTo(expandedDetails.children, {
-        opacity: 0,
-        y: 20
-      }, {
-        opacity: 1,
-        y: 0,
-        duration: 0.4,
-        stagger: 0.08,
-        delay: 0.4,
-        ease: 'power2.out'
-      });
+      gsap.fromTo(expandedDetails.children, 
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.4, stagger: 0.08, delay: 0.4, ease: 'power2.out' }
+      );
     }
 
-    // Initialize carousel
     const carouselCtrl = initCarousel(card);
-    if (carouselCtrl) {
-      card._carouselCtrl = carouselCtrl;
-    }
+    if (carouselCtrl) { card._carouselCtrl = carouselCtrl; }
 
-    // Animate carousel slots in
     const slots = card.querySelectorAll('.project-carousel__slot');
-    gsap.fromTo(slots, {
-      opacity: 0,
-      x: -20
-    }, {
-      opacity: (i) => i === 1 ? 1 : 0.4,
-      x: 0,
-      duration: 0.5,
-      stagger: 0.08,
-      delay: 0.3,
-      ease: 'power2.out'
-    });
+    gsap.fromTo(slots,
+      { opacity: 0, x: -20 },
+      { opacity: (i) => i === 1 ? 1 : 0.4, x: 0, duration: 0.5, stagger: 0.08, delay: 0.3, ease: 'power2.out' }
+    );
   }
 
   function closeProject(card) {
     const expandedContent = card.querySelector('.project-card__expanded');
     
-    gsap.to(expandedContent, {
-      opacity: 0,
-      duration: 0.2
-    });
+    gsap.to(expandedContent, { opacity: 0, duration: 0.2 });
 
     gsap.to(card, {
-      scale: 1,
-      zIndex: 1,
-      duration: 0.3,
-      ease: 'power2.in',
+      scale: 1, zIndex: 1, duration: 0.3, ease: 'power2.in',
       onComplete: () => {
         card.classList.remove('is-expanded');
         projectsSection.classList.remove('has-expanded');
@@ -354,51 +277,34 @@ function initProjectsSection() {
     });
 
     projectCards.forEach(otherCard => {
-      gsap.to(otherCard, {
-        opacity: 1,
-        scale: 1,
-        duration: 0.3
-      });
+      gsap.to(otherCard, { opacity: 1, scale: 1, duration: 0.3 });
     });
   }
 
-  // Close on escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       projectCards.forEach(card => {
-        if (card.classList.contains('is-expanded')) {
-          closeProject(card);
-        }
+        if (card.classList.contains('is-expanded')) { closeProject(card); }
       });
     }
   });
 
-  // Hover effects
   projectCards.forEach(card => {
     const info = card.querySelector('.project-card__info');
     
     card.addEventListener('mouseenter', () => {
       if (!card.classList.contains('is-expanded') && !projectsSection.classList.contains('has-expanded')) {
-        gsap.to(info, {
-          y: -10,
-          duration: 0.3,
-          ease: 'power2.out'
-        });
+        gsap.to(info, { y: -10, duration: 0.3, ease: 'power2.out' });
       }
     });
 
     card.addEventListener('mouseleave', () => {
       if (!card.classList.contains('is-expanded')) {
-        gsap.to(info, {
-          y: 0,
-          duration: 0.3,
-          ease: 'power2.out'
-        });
+        gsap.to(info, { y: 0, duration: 0.3, ease: 'power2.out' });
       }
     });
   });
 
-  // Keyboard accessibility
   projectCards.forEach(card => {
     const cardImage = card.querySelector('.project-card__image');
     cardImage.setAttribute('tabindex', '0');
@@ -406,10 +312,7 @@ function initProjectsSection() {
     cardImage.setAttribute('aria-label', 'View project details');
     
     cardImage.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        cardImage.click();
-      }
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); cardImage.click(); }
     });
   });
 }

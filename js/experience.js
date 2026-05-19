@@ -16,7 +16,7 @@ function initExperienceSection() {
     const track = item.querySelector('.gallery-track');
     if (track) {
       const images = track.innerHTML;
-      track.innerHTML = images + images; // Duplicate for infinite scroll
+      track.innerHTML = images + images;
     }
   });
 
@@ -27,14 +27,12 @@ function initExperienceSection() {
     header.addEventListener('click', () => {
       const isExpanded = item.classList.contains('is-expanded');
       
-      // Close all other items
       experienceItems.forEach(otherItem => {
         if (otherItem !== item && otherItem.classList.contains('is-expanded')) {
           collapseItem(otherItem);
         }
       });
       
-      // Toggle current item
       if (isExpanded) {
         collapseItem(item);
       } else {
@@ -49,7 +47,6 @@ function initExperienceSection() {
     const content = item.querySelector('.experience-content');
     const gallery = item.querySelector('.gallery-track');
     
-    // Animate expansion
     gsap.to(content, {
       maxHeight: '50rem',
       opacity: 1,
@@ -57,7 +54,6 @@ function initExperienceSection() {
       ease: 'power2.out'
     });
     
-    // Start gallery animation
     if (gallery) {
       gallery.style.animationPlayState = 'running';
     }
@@ -69,7 +65,6 @@ function initExperienceSection() {
     const content = item.querySelector('.experience-content');
     const gallery = item.querySelector('.gallery-track');
     
-    // Animate collapse
     gsap.to(content, {
       maxHeight: 0,
       opacity: 0,
@@ -77,18 +72,19 @@ function initExperienceSection() {
       ease: 'power2.in'
     });
     
-    // Pause gallery animation
     if (gallery) {
       gallery.style.animationPlayState = 'paused';
     }
   }
 
-  // Scroll-triggered reveal animations
+  // Scroll-triggered reveal - trigger ALL items when section enters view
+  const experienceSection = document.querySelector('.experience-section');
+  
   experienceItems.forEach((item, index) => {
     gsap.from(item, {
       scrollTrigger: {
-        trigger: item,
-        start: 'top bottom-=50',
+        trigger: experienceSection,
+        start: 'top 85%',
         toggleActions: 'play none none reverse'
       },
       opacity: 0,

@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Stats counter animations
+  // Stats counter animations - trigger earlier
   function initStatsAnimations() {
     const statItems = document.querySelectorAll('.stat-item');
     
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
       gsap.to(item, {
         scrollTrigger: {
           trigger: '.stats-section',
-          start: 'top bottom-=100',
+          start: 'top 90%',
           toggleActions: 'play none none reverse'
         },
         opacity: 1,
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       ScrollTrigger.create({
         trigger: '.stats-section',
-        start: 'top center',
+        start: 'top 85%',
         onEnter: () => {
           gsap.to(counter, {
             innerHTML: target,
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Section header animations
+  // Section header animations - trigger much earlier
   function initSectionAnimations() {
     const sectionHeaders = document.querySelectorAll('.section-header');
     
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.to(title, {
           scrollTrigger: {
             trigger: header,
-            start: 'top bottom-=100',
+            start: 'top 95%',
             toggleActions: 'play none none reverse'
           },
           opacity: 1,
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.to(subtitle, {
           scrollTrigger: {
             trigger: header,
-            start: 'top bottom-=100',
+            start: 'top 95%',
             toggleActions: 'play none none reverse'
           },
           opacity: 1,
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Footer animations
+  // Footer animations - trigger earlier
   function initFooterAnimations() {
     const footerPaths = document.querySelectorAll('.footer-svg-paths path');
     
@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     ScrollTrigger.create({
       trigger: '.footer',
-      start: 'top bottom-=100',
+      start: 'top 90%',
       onEnter: () => footerTl.play(),
       onLeaveBack: () => footerTl.reverse()
     });
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.to('.footer-cta', {
       scrollTrigger: {
         trigger: '.footer',
-        start: 'top bottom-=200',
+        start: 'top 90%',
         toggleActions: 'play none none reverse'
       },
       y: 0,
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.to('.footer-social', {
       scrollTrigger: {
         trigger: '.footer',
-        start: 'top bottom-=200',
+        start: 'top 90%',
         toggleActions: 'play none none reverse'
       },
       y: 0,
